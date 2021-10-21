@@ -1,12 +1,16 @@
-import { configureStore } from "@reduxjs/toolkit"
+import {configureStore} from "@reduxjs/toolkit"
 import todosReducer from "../features/todos/todosSlice"
+import createSagaMiddleware from "redux-saga"
+import rootSaga from "./sagas"
 
-export function makeStore() {
-  return configureStore({
-    reducer: { todos: todosReducer },
-  })
-}
+const sagaMiddleware = createSagaMiddleware()
 
-const store = makeStore()
+const store = configureStore({
+  reducer: { todos: todosReducer },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(sagaMiddleware),
+})
+
+sagaMiddleware.run(rootSaga)
 
 export default store
