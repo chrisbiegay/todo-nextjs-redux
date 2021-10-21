@@ -1,0 +1,13 @@
+main {
+    margin: 10px;
+}
+
+.description-field {
+    width: 400px;
+    margin-right: 10px;
+}
+
+.todo-list-container {
+  margin: 0;
+  width: 500px;
+}
