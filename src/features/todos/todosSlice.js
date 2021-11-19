@@ -18,7 +18,7 @@ export const todosSlice = createSlice({
   initialState,
   reducers: {
     // Add a to-do to the list.
-    add: (state, action) => {
+    addTodo: (state, action) => {
       let newTodosList = [...state.todosList]
       newTodosList.push(action.payload)
 
@@ -27,7 +27,7 @@ export const todosSlice = createSlice({
         todosList: newTodosList,
       }
     },
-    // Delete a to-do from the list. (Note that "delete" is a keyword, making it inconvenient as an action name.)
+    // Delete a to-do from the list.
     deleteTodo: (state, action) => {
       // action.payload is a 'to-do' object, which looks like:
       // {
@@ -53,7 +53,7 @@ export const todosSlice = createSlice({
 })
 
 // Action creators
-export const { add, deleteTodo } = todosSlice.actions
+export const { addTodo, deleteTodo } = todosSlice.actions
 
 // Selectors
 export const selectTodos = (state) => state.todos.todosList

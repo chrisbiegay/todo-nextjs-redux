@@ -1,6 +1,6 @@
-import React, {useState} from "react"
+import {React, useState, useRef} from "react"
 import {useDispatch} from "react-redux"
-import {add} from "./todosSlice"
+import {addTodo as addTodoToState} from "./todosSlice"
 
 /**
  * A component allowing to-do items to be added.
@@ -8,14 +8,15 @@ import {add} from "./todosSlice"
 export const AddTodo = () => {
   const dispatch = useDispatch()
   const [description, setDescription] = useState("")
+  const descriptionFieldRef = useRef()
 
-  function addTodo(e) {
-    e.preventDefault()
+  function addTodo() {
     if (description) {
-      dispatch(add({
+      dispatch(addTodoToState({
         description,
       }))
       setDescription("")
+      descriptionFieldRef.current.focus()
     }
   }
 
@@ -28,9 +29,10 @@ export const AddTodo = () => {
           type="text"
           placeholder="Description"
           value={description}
+          ref={descriptionFieldRef}
           onChange={(e) => {setDescription(e.target.value)}}/>
 
-        <input type="submit" value="Add To-Do" onClick={addTodo}/>
+        <button type="button" onClick={addTodo}>Add To-Do</button>
       </form>
     </div>
   )

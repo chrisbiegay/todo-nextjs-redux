@@ -4,7 +4,7 @@ import {selectTodos} from "../features/todos/todosSlice"
 // Basic Redux Sagas demo
 
 export default function* rootSaga() {
-  yield takeEvery("todos/add", logTodoAdded)
+  yield takeEvery("todos/addTodo", logTodoAdded)
   yield takeEvery("todos/deleteTodo", logTodoDeleted)
 }
 
