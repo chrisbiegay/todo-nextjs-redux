@@ -1,4 +1,4 @@
-import {React, useState, useRef} from "react"
+import {React, useState, useRef, useEffect} from "react"
 import {useDispatch} from "react-redux"
 import {addTodo as addTodoToState} from "./todosSlice"
 
@@ -9,15 +9,24 @@ export const AddTodo = () => {
   const dispatch = useDispatch()
   const [description, setDescription] = useState("")
   const descriptionFieldRef = useRef()
+  let firstRender = true
+
+  useEffect(() => {
+    if (firstRender) {
+      firstRender = false
+      descriptionFieldRef.current.focus()
+    }
+  })
 
   function addTodo() {
     if (description) {
-      dispatch(addTodoToState({
-        description,
-      }))
+      dispatch(
+        addTodoToState({ description })
+      )
       setDescription("")
-      descriptionFieldRef.current.focus()
     }
+
+    descriptionFieldRef.current.focus()
   }
 
   return (
