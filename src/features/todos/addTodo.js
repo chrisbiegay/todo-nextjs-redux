@@ -18,7 +18,8 @@ export const AddTodo = () => {
     }
   })
 
-  function addTodo() {
+  function addTodo(event) {
+    event.preventDefault()
     if (description) {
       dispatch(
         addTodoToState({ description })
@@ -32,7 +33,7 @@ export const AddTodo = () => {
   return (
     <div>
       <h2>Add To-Do</h2>
-      <form>
+      <form onSubmit={addTodo}>
         <input
           className="description-field"
           type="text"
@@ -41,7 +42,7 @@ export const AddTodo = () => {
           ref={descriptionFieldRef}
           onChange={(e) => {setDescription(e.target.value)}}/>
 
-        <button type="button" onClick={addTodo}>Add To-Do</button>
+        <button type="submit">Add To-Do</button>
       </form>
     </div>
   )

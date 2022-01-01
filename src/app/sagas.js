@@ -9,12 +9,12 @@ export default function* rootSaga() {
 }
 
 function* logTodoAdded(action) {
-  console.log(`To-do added: "${action.payload.description}"`)
+  console.log(`[Saga] To-do added: "${action.payload.description}"`)
   yield logToDoList()
 }
 
 function* logTodoDeleted(action) {
-  console.log(`To-do deleted: "${action.payload.description}"`)
+  console.log(`[Saga] To-do deleted: "${action.payload.description}"`)
   yield logToDoList()
 }
 
@@ -26,5 +26,5 @@ function* logToDoList() {
     formattedToDos += ` * ${toDo.description}\n`
   })
 
-  console.log(`Current to-do list:\n${formattedToDos}`)
+  console.log(`[Saga] Current to-do list:\n${formattedToDos}`)
 }
