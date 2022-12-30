@@ -8,13 +8,13 @@ This is a basic To-Do list application demonstrating the following frameworks:
 * Next.js
 
 # Prerequisites
-* Node.js v12.22.7
+* Node.js v18.12.1
 * Yarn
 
 # Project Creation
 These steps were used to create the project.
 ```
-nvm use lts/erbium
+nvm use lts/hydrogen
 npx create-next-app todo-nextjs-redux
 cd todo-nextjs-redux/
 yarn add react-redux
@@ -23,12 +23,20 @@ yarn add redux-saga
 ```
 
 # Run the App
+## Dev Mode
 This command runs the app via the Next.js development server.
 ```
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+## Production Mode
+These commands build and start the app in production mode.
+```
+yarn run build
+yarn run start
+```
 
 # Docker
 
